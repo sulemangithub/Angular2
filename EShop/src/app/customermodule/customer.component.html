@@ -1,0 +1,91 @@
+
+<div class="container">
+
+<div class="row" style="margin-top: 20px">
+    <div class="col-md-2"><img src="../../assets/images/logo.svg"></div>
+    <div class="col-md-6"></div>
+    <div class="col-md-4">
+
+        <div *ngIf="!loggedIn; else welcome">
+            <button (click)="openModal(loginmodal)" style="margin-right: 10px" class="btn btn-info">login</button>
+            <button (click)="openModal(registermodal)" style="margin-right: 10px" class="btn btn-info">register</button>            
+        </div>
+
+        <ng-template #welcome>
+            <label>Welcome {{user}}</label>
+            <button (click)="logout()" style="margin-right: 10px;margin-left: 10px" class="btn btn-info">logout</button>
+        </ng-template>        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+        <div *ngIf="loggedIn  && user !='admin@kpit.com'">
+            <product-component></product-component>
+        </div>
+
+        <div *ngIf="loggedIn && user =='admin@kpit.com'">
+            <admin-component></admin-component>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<ng-template #loginmodal>
+
+        <div class="modal-header">
+            Login
+        </div>
+
+        <div class="modal-body">
+            <ngb-alert [dismissible]="false">
+                {{message}}
+            </ngb-alert>
+            <label>Email</label>
+            <input type="text" #email placeholder="email" class="form-control">
+            <label>Password</label>
+            <input type="password" #password placeholder="password" class="form-control">
+            <input type="button" (click)="validateUser(email.value,password.value)" class="btn btn-info" style="margin-top: 10px;margin-left: 45%" value="login">
+        </div>
+
+        <div class="modal-footer">
+            <button (click)="closeModal()" class="btn btn-info" style="margin-left: 90%">close</button>       
+        </div>
+    
+</ng-template>
+
+<ng-template #registermodal>
+
+        <div class="modal-header">
+            Register
+        </div>
+
+        <div class="modal-body">
+            <label>Email</label>
+            <input type="text" #email placeholder="email" class="form-control">
+            
+            <label>Password</label>
+            <input type="password" #password placeholder="password" class="form-control">
+
+            <label>Name</label>
+            <input type="text" #name placeholder="name" class="form-control">
+
+            <label>City</label>
+            <input type="text" #city placeholder="city" class="form-control">
+
+            <label>Phone</label>
+            <input type="text" #phone placeholder="phone" class="form-control">
+
+            <label>DOB</label>
+            <input type="date" #dob placeholder="DOB" class="form-control">
+
+            <input type="button" (click)="registerUser(email.value,password.value,name.value,city.value,phone.value,dob.value)" class="btn btn-info" style="margin-top: 10px;margin-left: 45%" value="register">
+        </div>
+        
+        <div class="modal-footer">
+            <button (click)="closeModal()" class="btn btn-info" style="margin-left: 90%">close</button>       
+        </div>
+    
+</ng-template>

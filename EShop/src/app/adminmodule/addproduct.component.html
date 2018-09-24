@@ -1,0 +1,17 @@
+<h1>Add product</h1>
+
+{{message}}
+
+<form #myform="ngForm" (ngSubmit)="addProduct(myform.value)">
+    <input type="text" class="form-control" name="id" ngModel>
+    <input type="text" class="form-control" name="name" ngModel>
+    <input type="text" class="form-control" name="category" ngModel>
+    <input type="text" class="form-control" name="price" ngModel>
+    <input type="text" class="form-control" name="mDate" ngModel>
+    <input type="text" class="form-control" name="eDate" ngModel>
+    <input type="submit" value="add product" class="btn btn-primary">    
+</form>
+
+Enter soemthing <input type="text" [(ngModel)]="username">
+
+{{username}}

@@ -1,0 +1,62 @@
+<h1>Product Component</h1>
+
+<div class="container">
+
+    <p *ngIf="message != ''" class="alert alert-info" style="width: 100%;">{{message}}</p>
+
+    <label>ID</label>
+    <input type="text" #id class="form-control" value="{{product.id}}"> 
+    
+    <label>NAME</label>
+    <input type="text" #name class="form-control" value="{{product.name}}">  
+
+    <label>CATEGORY</label>   
+    <input type="text" #category class="form-control" value="{{product.category}}"> 
+
+    <label>PRICE</label>
+    <input type="text" #price class="form-control" value="{{product.price}}"> 
+
+    <div style="margin-left:200px;margin-top: 20px">
+        <button (click)="addProduct(id.value,name.value,category.value,price.value)" class="btn btn-info" style="margin-left:10px">add product</button>
+        <button (click)="getProduct(id.value)" class="btn btn-info" style="margin-left:10px">search product</button>
+        <button (click)="deleteProduct(id.value)" class="btn btn-info" style="margin-left:10px">delete product</button>
+        <button (click)="updateProduct(id.value,name.value,category.value,price.value)" class="btn btn-info" style="margin-left:10px">update product</button>
+        <button (click)="getAllProducts()" class="btn btn-info" style="margin-left:10px">view products</button>
+    </div>
+
+    <div *ngIf="productarray != null">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>CATEGORY</th>
+                    <th>PRICE</th>
+                    <th>DELTE/UPDATE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of productarray">
+                    <td>{{p.id}}</td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.category}}</td>
+                    <td>{{p.price}}</td>
+                    <td>
+                        <a (click)="getProduct(p.id)">
+                            <img  src="../assets/images/update_logo.jpg" 
+                            style="margin-right: 50px" height="20px" width="20px">
+                        </a>
+
+                        <a (click)="deleteProduct(p.id)">
+                            <img  src="../assets/images/delete_logo.png" 
+                            height="20px" width="20px">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+

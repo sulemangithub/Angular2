@@ -1,0 +1,17 @@
+<h2>This is sample component....</h2>
+
+Welcome {{name}}
+
+<ul>
+    <li *ngFor="let name of names">
+        {{name}}
+    </li>
+</ul>
+
+<div>
+    <p>{{message}}</p>
+    Enter name : <input type="text" #input1> <br>
+    <button (click)="addName(input1.value)">add name</button>
+</div>
+
+

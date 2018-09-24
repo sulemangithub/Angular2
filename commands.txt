@@ -1,0 +1,6 @@
+ng g c components/mainpage
+
+ng g c components/firstpage -it -is -- for inline template and css
+
+
+ng new RoutingExample --routing  --this will create a module called AppRoutingModule
